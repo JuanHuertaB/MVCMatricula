@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MATRICULAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="NROMAT" />
+    </Key>
+    <Property Name="NROMAT" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="CODCUR" Type="char" MaxLength="4" />
+    <Property Name="APENOM" Type="varchar" MaxLength="25" />
+    <Property Name="TIPO" Type="char" MaxLength="1" />
+    <Property Name="PAGO" Type="numeric" Precision="8" Scale="0" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="CODCUR" />
+    </Key>
+    <Property Name="CODCUR" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="CODESP" Type="char" MaxLength="2" />
+    <Property Name="NOMCUR" Type="char" MaxLength="15" />
+    <Property Name="COSTO" Type="numeric" Precision="8" Scale="0" />
+    <Property Name="Nrovac" Type="int" />
+  </EntityType>
+  <EntityType Name="TABESP">
+    <Key>
+      <PropertyRef Name="CODESP" />
+    </Key>
+    <Property Name="CODESP" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="NOMESP" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityContainer Name="MATRICULAModelStoreContainer">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TABESP" EntityType="Self.TABESP" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

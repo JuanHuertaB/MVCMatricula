@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MATRICULAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="NROMAT" />
+    </Key>
+    <Property Name="NROMAT" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CODCUR" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="APENOM" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="PAGO" Type="Decimal" Precision="8" Scale="0" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="CODCUR" />
+    </Key>
+    <Property Name="CODCUR" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CODESP" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="NOMCUR" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="COSTO" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="Nrovac" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TABESP">
+    <Key>
+      <PropertyRef Name="CODESP" />
+    </Key>
+    <Property Name="CODESP" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NOMESP" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="MATRICULAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" />
+    <EntitySet Name="TABESP" EntityType="Self.TABESP" />
+  </EntityContainer>
+</Schema>

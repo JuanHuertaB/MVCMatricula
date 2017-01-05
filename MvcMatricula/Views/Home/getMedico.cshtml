@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MvcMatricula.Models.ClassMedico>
+
+@{
+    ViewBag.Title = "Médicos";
+}
+
+@{
+    WebGrid grid = new WebGrid(Model,canPage:true,canSort:true,rowsPerPage:15);
+}
+<div id="Content">
+    @grid.GetHtml(
+
+        columns: grid.Columns
+                                (
+                                    grid.Column("codmed", "Codigo"),
+                                    grid.Column("nombre", "Nombre"),
+                                    grid.Column("colegiatura", "Colegiatura"),
+                                    grid.Column("codes","Especialidad"),
+                                    grid.Column(
+                                    
+    header: "Ver citas",
+    columnName: "codmed",
+    format: item => Html.ActionLink("Ver Citas", "getCitas", new { id = item.codmed, nom=item.nombre ,codes=item.codes})
+
+                                )
+                                ), mode: WebGridPagerModes.Numeric)
+</div>

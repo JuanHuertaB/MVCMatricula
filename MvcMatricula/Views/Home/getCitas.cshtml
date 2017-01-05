@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MvcMatricula.Models.Citas>
+
+@{
+    ViewBag.Title = "Citas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Citas del médico @Session["nombre"]</h2>
+@Html.Hidden("codes",Session["codes"])
+
+<p>
+    @Html.ActionLink("Crear cita", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            N° cita
+        </th>
+        <th>
+            Paciente
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Pago
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.nrocita
+        </td>
+        <td>
+            @item.nompac
+        </td>
+        <td>
+            @item.tipo
+        </td>
+        <td>
+            @item.pago
+        </td>
+    </tr>
+}
+
+</table>

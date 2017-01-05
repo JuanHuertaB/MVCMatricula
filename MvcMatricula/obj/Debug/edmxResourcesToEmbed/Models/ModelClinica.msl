@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="clinicaModelStoreContainer" CdmEntityContainer="clinicaEntities">
+    <EntitySetMapping Name="Citas">
+      <EntityTypeMapping TypeName="clinicaModel.Citas">
+        <MappingFragment StoreEntitySet="Citas">
+          <ScalarProperty Name="nrocita" ColumnName="nrocita" />
+          <ScalarProperty Name="codmed" ColumnName="codmed" />
+          <ScalarProperty Name="nompac" ColumnName="nompac" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="pago" ColumnName="pago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicos">
+      <EntityTypeMapping TypeName="clinicaModel.Medicos">
+        <MappingFragment StoreEntitySet="Medicos">
+          <ScalarProperty Name="codmed" ColumnName="codmed" />
+          <ScalarProperty Name="codes" ColumnName="codes" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="colegiatura" ColumnName="colegiatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabesp">
+      <EntityTypeMapping TypeName="clinicaModel.tabesp">
+        <MappingFragment StoreEntitySet="tabesp">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spCita" FunctionName="clinicaModel.Store.spCita" />
+  </EntityContainerMapping>
+</Mapping>

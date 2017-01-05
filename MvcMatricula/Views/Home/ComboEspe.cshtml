@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "ComboEspe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Especialidades</h2>
+
+@using (Html.BeginForm())
+{
+    <hr />
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div>
+
+       <h4>Seleccionar especialidad: @Html.DropDownList("esp", ViewData["esp"] as SelectList, "Select") </h4> 
+    </div>
+    <br />
+
+    <div id="espec" style="width: 100%; height: 100%; overflow:hidden; display:none">
+        <%= Html.RenderPartial("getMedico", Model) %>
+    </div>
+
+}  
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#esp").change(function () {
+
+            if ($("#esp").val() != "Select") {
+                //alert("hola")
+                //show div with loading image (processing request)
+                //alert($("#esp").val())
+               // alert($("#esp").contents())
+                //working ajax
+                $.ajax({
+                    url: '../Home/getMedico',
+                    type: 'POST',
+                    data: "id=" + $("#esp").val(),
+                    //data: "nom="+ $("#esp").contains(),
+                    dataType: 'html'
+                })
+                  .success(function (result) {
+                      $('#espec').show();
+                      $('#espec').html(result);
+                  })
+                  .error(function (xhr, status) {
+                      alert(status);
+                  });
+            }
+            else {
+                alert("error");
+
+                //  $('#dvSalesOrdersLoader').show();
+            }
+        });
+    });
+</script>
+
+
+
